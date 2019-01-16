@@ -1,0 +1,6 @@
+import os
+
+year = 1947
+while year < 2019:
+    os.mkdir("{}".format(year))
+    year += 1
