@@ -47,23 +47,24 @@ def add_label(line,name_list,count):
         sep = re.search(pattern,line)
         if len(sep.group(1)) > 2 or len(sep.group(1)) < 20:
             line = line.replace(sep.group(1),"")
-            name_label = '__label__'+name_list[count] + ', '
+            name_l = '__label__'+name_list[count] + ', '
             count += 1
     except AttributeError:
         try:
             sep = re.search(pattern2,line)
             if len(sep.group(1)) > 2 or len(sep.group(1)) < 20:
                 line = line.replace(sep.group(1),"")
-                name_label = '__label__'+name_list[count] + ', '
+                name_l = '__label__'+name_list[count] + ', '
                 count += 1
         except AttributeError:
+            name_l = ""
             line = ""
-    return line,name_label,count
+    return line,name_l,count
 
 
 if __name__ == "__main__":
     labeling_data = ""
-    year = 1990
+    year = 2000
     mon = ['01','04','05','06','07','08','09','10']
     while year < 2019:
         for m in mon:
@@ -73,6 +74,6 @@ if __name__ == "__main__":
                 for data in labeling(minutes_p,name_p):
                     labeling_data += data + '\n'
                 print(year,m)
-        with open("label_1990to2018.csv",'a')as f:
+        with open("label_2000to2018.csv",'a')as f:
             f.write(labeling_data)
         year += 1
