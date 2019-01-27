@@ -34,6 +34,7 @@ def labeling(minutes_path,name_path):
                 line = re_full2.sub(" ", line)
                 line = re_comma.sub(" ",line)
                 label_data += line
+        yield label_data
 
 def wakati(words):
     tagger = MeCab.Tagger("-Owakati -d /usr/local/lib/mecab/dic/mecab-ipadic-neologd")
@@ -64,7 +65,7 @@ def add_label(line,name_list,count):
 
 if __name__ == "__main__":
     labeling_data = ""
-    year = 2000
+    year = 2017
     mon = ['01','04','05','06','07','08','09','10']
     while year < 2019:
         for m in mon:
@@ -74,6 +75,6 @@ if __name__ == "__main__":
                 for data in labeling(minutes_p,name_p):
                     labeling_data += data + '\n'
                 print(year,m)
-        with open("label_2000to2018.csv",'a')as f:
+        with open(r"label_2017to2018.csv",'a')as f:
             f.write(labeling_data)
         year += 1
