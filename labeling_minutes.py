@@ -33,14 +33,15 @@ def wakati(words):
     tagger.parse('')
     sloth = sloth_words()
     words = tagger.parse(words).strip()
-    words = words.split()
-    wakati = ''
-    for word in words:
-        if word in sloth:
-            pass
-        else:
-            wakati += word + ' '
-    return wakati
+    #words = words.split()
+    #wakati = ''
+    #for word in words:
+    #    if word in sloth:
+    #        pass
+    #    else:
+    #        wakati += word + ' '
+    #return wakati
+    return words
 
 def add_label(line,name_list,count):
     pattern = "(.*)　(.*)"  #全角スペースで分ける
